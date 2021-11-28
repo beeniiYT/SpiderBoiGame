@@ -1,0 +1,128 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://other/tiles.tres" type="TileSet" id=1]
+[ext_resource path="res://other/exit1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://other/New Piskel-1.png (31).png" type="Texture" id=4]
+[ext_resource path="res://other/Pixeled.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://icon.png" type="Texture" id=6]
+[ext_resource path="res://other/Lava.gd" type="Script" id=7]
+[ext_resource path="res://other/portal.tscn" type="PackedScene" id=8]
+
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;
+uniform vec2 scale;
+uniform float yzoom;
+uniform vec4 lavacolor : hint_color;
+uniform sampler2D noise;
+uniform vec2 distortionscale;
+uniform float intensity;
+uniform float speed;
+uniform float waveamplitude;
+uniform float wavespeed;
+uniform float waveperiod;
+
+void fragment()
+{
+	float waves = UV.y * scale.y + sin(UV.x * scale.x / waveperiod + TIME * wavespeed) * cos(0.2 * UV.x * scale.x / waveperiod + TIME - wavespeed)
+	* waveamplitude - waveamplitude;
+	float distortion = texture(noise, UV * scale * distortionscale + TIME * speed).x;
+	distortion -= 0.5;
+	float uv_height = SCREEN_PIXEL_SIZE.y / TEXTURE_PIXEL_SIZE.y;
+	vec2 reflected_screenuv = vec2(SCREEN_UV.x - distortion * intensity * yzoom, SCREEN_UV.y + uv_height * UV.y * scale.y * yzoom * 2.0);
+	vec4 reflection = texture(SCREEN_TEXTURE, reflected_screenuv);
+	COLOR.rgb = mix(reflection.rgb, lavacolor.rgb, lavacolor.a);
+	COLOR.a = step(0.0, waves);
+}"
+
+[sub_resource type="OpenSimplexNoise" id=4]
+
+[sub_resource type="NoiseTexture" id=5]
+seamless = true
+noise = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
+shader_param/scale = Vector2( 16.2891, 2.53125 )
+shader_param/yzoom = 0.561231
+shader_param/lavacolor = Color( 1, 0.188235, 0, 0.423529 )
+shader_param/distortionscale = Vector2( 0.05, 0.4 )
+shader_param/intensity = 0.04
+shader_param/speed = 0.085
+shader_param/waveamplitude = 0.08
+shader_param/wavespeed = 1.0
+shader_param/waveperiod = 0.4
+shader_param/noise = SubResource( 5 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 5 )
+
+[node name="Level_10" type="Node2D"]
+
+[node name="Lava" type="Sprite" parent="."]
+material = SubResource( 3 )
+position = Vector2( 507.25, 516 )
+scale = Vector2( 16.2891, 2.53125 )
+z_index = 2
+texture = ExtResource( 6 )
+script = ExtResource( 7 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+format = 1
+tile_data = PoolIntArray( 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 327680, 1, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 393229, 0, 0, 393230, 0, 0, 393231, 0, 0, 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458757, 0, 0, 458758, 0, 0, 458760, 0, 0, 458761, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 458767, 0, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 6, -247 )
+
+[node name="NewPiskel-1png(31)" type="Sprite" parent="."]
+position = Vector2( 32, 290 )
+scale = Vector2( 1000, 1000 )
+z_index = -50
+texture = ExtResource( 4 )
+
+[node name="Texts" type="Node2D" parent="."]
+position = Vector2( 18, 239 )
+
+[node name="Label" type="Label" parent="Texts"]
+margin_left = 3.0
+margin_top = 29.0
+margin_right = 247.0
+margin_bottom = 85.0
+rect_rotation = -20.6
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "just for fun ;)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Texts"]
+margin_left = 505.0
+margin_top = -73.0
+margin_right = 1005.0
+margin_bottom = 42.0
+rect_rotation = 8.6
+rect_pivot_offset = Vector2( 88.1406, 28 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "but seriosly just stop playing"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="portal" parent="." instance=ExtResource( 8 )]
+modulate = Color( 1, 0.45098, 0, 1 )
+position = Vector2( 505, 136 )
+rotation = 1.5708
+
+[node name="portal2" parent="." instance=ExtResource( 8 )]
+modulate = Color( 0, 0.14902, 0.992157, 1 )
+position = Vector2( 509, 375 )
+rotation = 1.5708
+
+[node name="Complete" parent="." instance=ExtResource( 2 )]
+position = Vector2( 990, 353 )
+
+[connection signal="item_rect_changed" from="Lava" to="Lava" method="_on_Lava_item_rect_changed"]

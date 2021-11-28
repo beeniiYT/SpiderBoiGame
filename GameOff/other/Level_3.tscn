@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://other/tiles.tres" type="TileSet" id=1]
+[ext_resource path="res://other/exit1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://other/New Piskel-1.png (31).png" type="Texture" id=4]
+[ext_resource path="res://other/Pixeled.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 5 )
+
+[node name="Level_3" type="Node2D"]
+
+[node name="Complete" parent="." instance=ExtResource( 2 )]
+position = Vector2( 995, 223 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+format = 1
+tile_data = PoolIntArray( 262155, 0, 0, 262156, 0, 0, 262157, 0, 0, 262158, 0, 0, 262159, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 393216, 1, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 458767, 0, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+
+[node name="NewPiskel-1png(31)" type="Sprite" parent="."]
+position = Vector2( 12, 203 )
+scale = Vector2( 1000, 1000 )
+z_index = -50
+texture = ExtResource( 4 )
+
+[node name="Texts" type="Node2D" parent="."]
+position = Vector2( 18, 239 )
+
+[node name="Label" type="Label" parent="Texts"]
+margin_left = 139.0
+margin_top = -160.0
+margin_right = 367.0
+margin_bottom = -104.0
+rect_rotation = -20.6
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "ummm..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Texts"]
+margin_left = 393.0
+margin_top = -74.0
+margin_right = 621.0
+margin_bottom = -18.0
+rect_pivot_offset = Vector2( 88.1406, 28 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "cant go back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Texts"]
+margin_left = 744.0
+margin_top = -193.0
+margin_right = 972.0
+margin_bottom = -137.0
+rect_rotation = 8.6
+rect_pivot_offset = Vector2( 88.1406, 28 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "cool"
+__meta__ = {
+"_edit_use_anchors_": false
+}

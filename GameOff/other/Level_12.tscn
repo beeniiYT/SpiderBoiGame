@@ -1,0 +1,91 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://other/tiles.tres" type="TileSet" id=1]
+[ext_resource path="res://other/exit1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://other/New Piskel-1.png (31).png" type="Texture" id=4]
+[ext_resource path="res://other/Pixeled.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://other/New Piskel-1.png (34).png" type="Texture" id=6]
+[ext_resource path="res://other/portal.tscn" type="PackedScene" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32.2337, 8.86668 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+font_data = ExtResource( 5 )
+
+[node name="Level_12" type="Node2D"]
+position = Vector2( -5, 0 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+format = 1
+tile_data = PoolIntArray( 327686, 0, 0, 393216, 1, 0, 393222, 0, 0, 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 458767, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 51, 79 )
+
+[node name="NewPiskel-1png(31)" type="Sprite" parent="."]
+position = Vector2( 24, 170 )
+scale = Vector2( 1000, 1000 )
+z_index = -50
+texture = ExtResource( 4 )
+
+[node name="NewPiskel-1png(34)" type="Sprite" parent="."]
+position = Vector2( 842, 415 )
+rotation = -0.431096
+scale = Vector2( 10, 10 )
+z_index = -2
+texture = ExtResource( 6 )
+flip_h = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="NewPiskel-1png(34)"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NewPiskel-1png(34)/StaticBody2D"]
+position = Vector2( -0.63369, 1.13332 )
+rotation = 2.98023e-08
+shape = SubResource( 1 )
+
+[node name="portal" parent="." instance=ExtResource( 8 )]
+modulate = Color( 0, 0.572549, 1, 1 )
+position = Vector2( 375, 393 )
+
+[node name="portal2" parent="." instance=ExtResource( 8 )]
+modulate = Color( 1, 0.709804, 0, 1 )
+position = Vector2( 563, 311 )
+rotation = 1.5708
+
+[node name="Texts" type="Node2D" parent="."]
+position = Vector2( 18, 239 )
+
+[node name="Label" type="Label" parent="Texts"]
+margin_left = 166.0
+margin_top = -141.0
+margin_right = 462.0
+margin_bottom = -85.0
+rect_rotation = -20.6
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "shhh... quiet"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Texts"]
+margin_left = 476.0
+margin_top = -188.0
+margin_right = 976.0
+margin_bottom = -73.0
+rect_rotation = 8.6
+rect_pivot_offset = Vector2( 88.1406, 28 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "enter the nose"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Complete" parent="." instance=ExtResource( 2 )]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 783, 323 )

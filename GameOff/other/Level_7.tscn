@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://other/tiles.tres" type="TileSet" id=1]
+[ext_resource path="res://other/exit1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://other/New Piskel-1.png (31).png" type="Texture" id=4]
+[ext_resource path="res://other/Pixeled.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://other/portal.tscn" type="PackedScene" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 5 )
+
+[node name="Level_7" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+format = 1
+tile_data = PoolIntArray( 4, 0, 0, 65536, 1, 0, 65540, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327687, 0, 0, 327690, 0, 0, 327693, 0, 0, 393220, 0, 0, 393223, 0, 0, 393226, 0, 0, 393229, 0, 0, 393231, 0, 0, 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 458767, 0, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 22, -260 )
+
+[node name="NewPiskel-1png(31)" type="Sprite" parent="."]
+position = Vector2( 25, 350 )
+scale = Vector2( 1000, 1000 )
+z_index = -50
+texture = ExtResource( 4 )
+
+[node name="Texts" type="Node2D" parent="."]
+position = Vector2( 18, 239 )
+
+[node name="Label" type="Label" parent="Texts"]
+margin_left = 258.0
+margin_top = -8.0
+margin_right = 486.0
+margin_bottom = 48.0
+rect_rotation = -20.6
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "blocks..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Texts"]
+margin_left = 580.0
+margin_top = -152.0
+margin_right = 984.0
+margin_bottom = -37.0
+rect_rotation = 8.6
+rect_pivot_offset = Vector2( 88.1406, 28 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "im running out of ideas..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Complete" parent="." instance=ExtResource( 2 )]
+position = Vector2( 994, 351 )
+
+[node name="portal" parent="." instance=ExtResource( 6 )]
+modulate = Color( 0.211765, 0.439216, 0.882353, 1 )
+position = Vector2( 251, 80 )
+
+[node name="portal2" parent="." instance=ExtResource( 6 )]
+modulate = Color( 1, 0.541176, 0.12549, 1 )
+position = Vector2( 9, 271 )

@@ -1,0 +1,99 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://other/tiles.tres" type="TileSet" id=1]
+[ext_resource path="res://other/exit1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://other/New Piskel-1.png (31).png" type="Texture" id=4]
+[ext_resource path="res://other/Pixeled.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://other/New Piskel-1.png (34).png" type="Texture" id=6]
+[ext_resource path="res://other/exit1.gd" type="Script" id=7]
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+font_data = ExtResource( 5 )
+
+[node name="Level_13" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+format = 1
+tile_data = PoolIntArray( 393216, 1, 0, 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 458767, 0, 0 )
+
+[node name="Complete" parent="." instance=ExtResource( 2 )]
+position = Vector2( 992, 418 )
+script = ExtResource( 7 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 30, 76 )
+
+[node name="NewPiskel-1png(31)" type="Sprite" parent="."]
+position = Vector2( 18, 238 )
+scale = Vector2( 1000, 1000 )
+z_index = -50
+texture = ExtResource( 4 )
+
+[node name="NewPiskel-1png(34)" type="Sprite" parent="."]
+position = Vector2( 516, 307 )
+rotation = 1.5708
+scale = Vector2( 10, 10 )
+z_index = -2
+texture = ExtResource( 6 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="Texts" type="Node2D" parent="CanvasLayer"]
+position = Vector2( 18, 239 )
+
+[node name="Label" type="Label" parent="CanvasLayer/Texts"]
+margin_left = -9.00002
+margin_top = 111.0
+margin_right = 287.0
+margin_bottom = 167.0
+rect_rotation = -20.6
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "jk theres nothing!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="CanvasLayer/Texts"]
+margin_left = 425.0
+margin_top = -245.0
+margin_right = 925.0
+margin_bottom = -130.0
+rect_pivot_offset = Vector2( 88.1406, 28 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "say hi to jeff"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="CanvasLayer/Texts"]
+margin_left = 46.0001
+margin_top = -206.0
+margin_right = 546.0
+margin_bottom = -91.0
+rect_pivot_offset = Vector2( 88.1406, 28 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "noice"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label6" type="Label" parent="CanvasLayer/Texts"]
+margin_left = 712.0
+margin_top = -34.0
+margin_right = 1212.0
+margin_bottom = 81.0
+rect_rotation = 17.8
+rect_pivot_offset = Vector2( 88.1406, 28 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "thx for playing"
+__meta__ = {
+"_edit_use_anchors_": false
+}

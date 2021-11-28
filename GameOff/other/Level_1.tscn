@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://other/tiles.tres" type="TileSet" id=1]
+[ext_resource path="res://other/exit1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://other/Pixeled.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://other/New Piskel-1.png (31).png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 4 )
+
+[node name="Level_1" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+format = 1
+tile_data = PoolIntArray( 327680, 1, 0, 327688, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 393229, 0, 0, 393230, 0, 0, 393231, 0, 0 )
+
+[node name="Texts" type="Node2D" parent="."]
+position = Vector2( 18, 239 )
+
+[node name="Label" type="Label" parent="Texts"]
+margin_left = 16.0
+margin_top = -146.0
+margin_right = 244.0
+margin_bottom = -90.0
+rect_rotation = -20.6
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "only two keys"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Texts"]
+margin_left = 112.0
+margin_top = -51.0
+margin_right = 340.0
+margin_bottom = 5.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "right to go"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Texts"]
+margin_left = 419.0
+margin_top = -46.0
+margin_right = 655.0
+margin_bottom = 10.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "space to jump"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="Texts"]
+margin_left = 754.0
+margin_top = -130.0
+margin_right = 990.0
+margin_bottom = -74.0
+rect_rotation = 17.8
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "good job ;)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+
+[node name="NewPiskel-1png(31)" type="Sprite" parent="."]
+position = Vector2( 43, 203 )
+scale = Vector2( 1000, 1000 )
+z_index = -50
+texture = ExtResource( 5 )
+
+[node name="Complete" parent="." instance=ExtResource( 2 )]
+position = Vector2( 991, 355 )
